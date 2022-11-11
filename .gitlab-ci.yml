@@ -9,8 +9,6 @@ npm-build:
     expire_in: 1 week
     paths:
       - csc4008-project-ui
-  trigger:
-    project: $CDK_DOWNSTREAM_PROJECT
 
 docker-build:
   # Use the official docker image.
@@ -38,3 +36,8 @@ docker-build:
     - if: $CI_COMMIT_BRANCH
       exists:
         - Dockerfile
+
+trigger-cdk:
+  stage: deploy
+  trigger:
+    project: $CDK_DOWNSTREAM_PROJECT
