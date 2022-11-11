@@ -8,7 +8,9 @@ npm-build:
   artifacts:
     expire_in: 1 week
     paths:
-      - dist
+      - csc4008-project-ui
+  trigger:
+    project: $CDK_DOWNSTREAM_PROJECT
 
 docker-build:
   # Use the official docker image.
