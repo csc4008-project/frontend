@@ -9,36 +9,36 @@
           <form>
             <div class="mb-3">
               <label
-                  for="inputFullName"
-                  class="form-label"
+                for="inputFullName"
+                class="form-label"
               >Full name</label>
               <input
-                  id="inputFullName"
-                  type="text"
-                  class="form-control"
-                  aria-describedby="fullNameHelp"
+                id="inputFullName"
+                type="text"
+                class="form-control"
+                aria-describedby="fullNameHelp"
               >
               <div
-                  id="fullNameHelp"
-                  class="form-text"
+                id="fullNameHelp"
+                class="form-text"
               >
                 The full name you would like to be referred to by.
               </div>
             </div>
             <div class="mb-3">
               <label
-                  for="inputEmail"
-                  class="form-label"
+                for="inputEmail"
+                class="form-label"
               >Email address</label>
               <input
-                  id="inputEmail"
-                  type="email"
-                  class="form-control"
-                  aria-describedby="emailHelp"
+                id="inputEmail"
+                type="email"
+                class="form-control"
+                aria-describedby="emailHelp"
               >
               <div
-                  id="emailHelp"
-                  class="form-text"
+                id="emailHelp"
+                class="form-text"
               >
                 Your company email address.
               </div>
@@ -46,36 +46,36 @@
             <div class="row mb-3">
               <div class="col">
                 <label
-                    for="inputPassword"
-                    class="form-label"
+                  for="inputPassword"
+                  class="form-label"
                 >Password</label>
                 <input
-                    id="inputPassword"
-                    type="password"
-                    class="form-control"
-                    aria-describedby="passwordHelp"
+                  id="inputPassword"
+                  type="password"
+                  class="form-control"
+                  aria-describedby="passwordHelp"
                 >
                 <div
-                    id="passwordHelp"
-                    class="form-text"
+                  id="passwordHelp"
+                  class="form-text"
                 >
                   Choose a password for your account.
                 </div>
               </div>
               <div class="col">
                 <label
-                    for="inputConfirmPassword"
-                    class="form-label"
+                  for="inputConfirmPassword"
+                  class="form-label"
                 >Confirm password</label>
                 <input
-                    id="inputConfirmPassword"
-                    type="password"
-                    class="form-control"
-                    aria-describedby="confirmPasswordHelp"
+                  id="inputConfirmPassword"
+                  type="password"
+                  class="form-control"
+                  aria-describedby="confirmPasswordHelp"
                 >
                 <div
-                    id="confirmPasswordHelp"
-                    class="form-text"
+                  id="confirmPasswordHelp"
+                  class="form-text"
                 >
                   Please confirm the password you entered above.
                 </div>
@@ -83,18 +83,18 @@
             </div>
             <div class="mb-3 form-check">
               <input
-                  id="checkboxAcceptTerms"
-                  type="checkbox"
-                  class="form-check-input"
+                id="checkboxAcceptTerms"
+                type="checkbox"
+                class="form-check-input"
               >
               <label
-                  class="form-check-label"
-                  for="checkboxAcceptTerms"
+                class="form-check-label"
+                for="checkboxAcceptTerms"
               >I accept the terms and conditions</label>
             </div>
             <button
-                type="submit"
-                class="btn btn-primary"
+              type="submit"
+              class="btn btn-primary"
             >
               Submit
             </button>

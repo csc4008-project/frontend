@@ -15,7 +15,11 @@
   </div>
   <div class="row">
     <div class="col-3 offset-md-4">
-      <img :src="require('@/assets/Compass.png')" class="img-fluid" alt="A road with barriers across the road with a sign that reads Road Closed">
+      <img
+        :src="require('@/assets/Compass.png')"
+        class="img-fluid"
+        alt="A road with barriers across the road with a sign that reads Road Closed"
+      >
     </div>
   </div>
 </template>

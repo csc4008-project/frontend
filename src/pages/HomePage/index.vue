@@ -1,6 +1,6 @@
 <template>
   <div class="row mb-3">
-    <div class="col">
+    <div class="col-md mb-3">
       <div class="card text-bg-light">
         <div class="card-body">
           <svg
@@ -30,7 +30,7 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col-md mb-3">
       <div class="card text-bg-light">
         <div class="card-body">
           <svg
@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col-md mb-3">
       <div class="card text-bg-light">
         <div class="card-body">
           <svg
