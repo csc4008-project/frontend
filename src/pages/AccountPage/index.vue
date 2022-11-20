@@ -1,18 +1,52 @@
 <template>
   <div class="row mt-md-5">
     <div class="col-md-8 offset-md-2">
+      <div
+          v-if="accountUpdated"
+          class="alert alert-success"
+          role="alert"
+      >
+        <strong>Success!</strong> Your account was updated successfully.
+      </div>
+      <div
+        v-if="accountCreated"
+        class="alert alert-success alert-dismissible fade show"
+        role="alert"
+      >
+        <strong>Welcome!</strong> Your account was created successfully.
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        />
+      </div>
       <div class="card text-bg-light">
         <div class="card-header">
-          Register
+          <div class="row d-flex align-items-center">
+            <div class="col">
+              <h5 class="mb-0">
+                Profile
+              </h5>
+            </div>
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-primary float-end"
+                @click="toggleEditing"
+              >
+                <span v-if="editing">
+                  Cancel
+                </span>
+                <span v-else>
+                  Edit
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
         <div class="card-body">
-          <div 
-            v-if="message"
-            class="alert alert-danger"
-          >
-            <strong>Error!</strong> {{ message }}
-          </div>
-          <form @submit.prevent="handleRegister">
+          <form @submit.prevent="updateAccount">
             <div class="mb-3">
               <label
                 for="inputFullName"
@@ -24,6 +58,7 @@
                 type="text"
                 class="form-control"
                 aria-describedby="fullNameHelp"
+                :disabled="!editing"
               >
               <div
                 id="fullNameHelp"
@@ -43,6 +78,7 @@
                 type="email"
                 class="form-control"
                 aria-describedby="emailHelp"
+                :disabled="!editing"
               >
               <div
                 id="emailHelp"
@@ -63,12 +99,13 @@
                   type="password"
                   class="form-control"
                   aria-describedby="passwordHelp"
+                  :disabled="!editing"
                 >
                 <div
                   id="passwordHelp"
                   class="form-text"
                 >
-                  Choose a password for your account.
+                  Leave this field blank to keep your current password.
                 </div>
               </div>
               <div class="col">
@@ -82,12 +119,13 @@
                   type="password"
                   class="form-control"
                   aria-describedby="confirmPasswordHelp"
+                  :disabled="!editing"
                 >
                 <div
                   id="confirmPasswordHelp"
                   class="form-text"
                 >
-                  Please confirm the password you entered above.
+                  If you are changing your password, please confirm it.
                 </div>
               </div>
             </div>
@@ -96,7 +134,8 @@
                 id="checkboxAcceptTerms"
                 type="checkbox"
                 class="form-check-input"
-                required
+                checked
+                disabled
               >
               <label
                 class="form-check-label"
@@ -104,18 +143,19 @@
               >I accept the terms and conditions</label>
             </div>
             <button
-              type="submit"
-              class="btn btn-primary"
+                v-if="editing"
+                type="submit"
+                class="btn btn-primary"
             >
               <span v-if="loading">
                 <span
-                  class="spinner-border spinner-border-sm"
-                  role="status"
-                  aria-hidden="true"
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
                 />
                 <span class="visually-hidden">Loading...</span>
               </span>
-              Register
+              Update
             </button>
           </form>
         </div>
@@ -126,43 +166,58 @@
 
 <script>
 export default {
-  name: "RegisterPage",
+  name: "AccountPage",
   data() {
     return {
       user: {
         name: '',
         email: '',
         password: '',
-        confirmPassword: '',
+        confirmPassword: ''
       },
+      editing: false,
       message: '',
-      successful: false,
-      loading: false
+      loading: false,
+      accountCreated: this.$route.query.accountCreated,
+      accountUpdated: false
     }
   },
+  created() {
+    this.setCurrentVals();
+  },
   methods: {
-    handleRegister() {
-      this.message = "";
-      this.successful = false;
+    setCurrentVals() {
+      this.user.name = this.$store.state.auth.user.name
+      this.user.email = this.$store.state.auth.user.email
+    },
+    toggleEditing() {
+      this.setCurrentVals()
+      this.editing = !this.editing
+    },
+    updateAccount() {
       this.loading = true;
 
-      this.$store.dispatch("auth/register", this.user).then(
+      this.$store.dispatch("auth/updateAccount", this.user).then(
           () => {
-            this.$router.push({ path: "/account", query: { accountCreated: true } });
+            this.user.password = '';
+            this.user.confirmPassword = '';
+
+            this.loading = false;
+            this.accountUpdated = true;
+            this.editing = false;
           },
           (error) => {
+            this.loading = false;
             this.message =
                 (error.response &&
                     error.response.data &&
                     error.response.data.message) ||
                 error.message ||
                 error.toString();
-            this.successful = false;
-            this.loading = false;
           }
       );
     },
-  },
+  }
 }
 </script>
 
