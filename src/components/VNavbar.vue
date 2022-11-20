@@ -40,20 +40,54 @@
             </router-link>
           </li>
         </ul>
-        <router-link
-          class="btn btn-primary me-2"
-          to="/login"
-          role="button"
-        >
-          Login
-        </router-link>
-        <router-link
-          class="btn btn-primary"
-          to="/register"
-          role="button"
-        >
-          Register
-        </router-link>
+        <div v-if="currentUser">
+          <ul class="d-flex navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Hello {{ currentUser.name.replace(/ .*/,'') }}
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <router-link
+                    class="dropdown-item"
+                    to="/account"
+                  >
+                    Account
+                  </router-link>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    @click.prevent="logOut"
+                  >Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div v-else>
+          <router-link
+            class="btn btn-primary me-2"
+            to="/login"
+            role="button"
+          >
+            Login
+          </router-link>
+          <router-link
+            class="btn btn-primary"
+            to="/register"
+            role="button"
+          >
+            Register
+          </router-link>
+        </div>
       </div>
     </div>
   </nav>
@@ -61,7 +95,18 @@
 
 <script>
 export default {
-  name: "VNavbar"
+  name: "VNavbar",
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    },
+  },
+  methods: {
+    logOut() {
+      this.$store.dispatch('auth/logout');
+      this.$router.push('/login');
+    }
+  }
 }
 </script>
 
