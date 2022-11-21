@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-/dist
+/csc4008-project-ui
 
 
 # local env files
