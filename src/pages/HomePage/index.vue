@@ -22,10 +22,16 @@
             Create a booking for a meeting room or a desk.  You can also modify your existing bookings.
           </p>
           <router-link
-            to="/bookings"
+            to="/bookings/rooms"
+            class="btn btn-primary me-2"
+          >
+            Room bookings
+          </router-link>
+          <router-link
+            to="/bookings/desks"
             class="btn btn-primary"
           >
-            Bookings
+            Desk bookings
           </router-link>
         </div>
       </div>
