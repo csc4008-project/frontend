@@ -31,17 +31,44 @@
               Home
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link"
-              to="/bookings"
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
             >
               Bookings
-            </router-link>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <router-link
+                  class="dropdown-item"
+                  to="/bookings/rooms"
+                >
+                  Room bookings
+                </router-link>
+              </li><li>
+                <router-link
+                  class="dropdown-item"
+                  to="/bookings/desks"
+                >
+                  Desk bookings
+                </router-link>
+              </li>
+            </ul>
           </li>
         </ul>
         <div v-if="currentUser">
           <ul class="d-flex navbar-nav me-auto mb-2 mb-lg-0">
+            <router-link
+              class="btn btn-success float-end me-2"
+              to="/bookings/new"
+              role="button"
+            >
+              New booking
+            </router-link>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"

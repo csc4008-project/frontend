@@ -5,15 +5,19 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
 import PageNotFound from "@/pages/PageNotFound";
-import ShowBookingsPage from "@/pages/ShowBookingsPage";
 import LoginPage from "@/pages/LoginPage";
 import RegisterPage from "@/pages/RegisterPage";
 import store from "@/store";
 import AccountPage from "@/pages/AccountPage";
+import NewBookingPage from "@/pages/NewBookingPage";
+import ShowDeskBookingsPage from "@/pages/ShowDeskBookingsPage";
+import ShowRoomBookingsPage from "@/pages/ShowRoomBookingsPage";
 
 const routes = [
     { path: '/', component: HomePage },
-    { path: '/bookings', component: ShowBookingsPage },
+    { path: '/bookings/rooms', component: ShowRoomBookingsPage },
+    { path: '/bookings/desks', component: ShowDeskBookingsPage },
+    { path: '/bookings/new', component: NewBookingPage },
     { path: '/login', component: LoginPage },
     { path: '/register', component: RegisterPage },
     { path: '/account', component: AccountPage },
