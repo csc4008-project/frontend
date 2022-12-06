@@ -116,7 +116,7 @@
                 <label
                   class="form-label"
                   for="duration"
-                >Duration (hours)</label>
+                >Duration (minutes)</label>
                 <input
                   id="duration"
                   v-model="booking.duration"
@@ -578,7 +578,9 @@ export default {
           },
           error => {
             this.error =
-                (error.response && error.response.data) ||
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
                 error.message ||
                 error.toString();
           }
